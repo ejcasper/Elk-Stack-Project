@@ -1,5 +1,5 @@
 # Project1
-##Cybersecurity Project 1 - Homework
+## Cybersecurity Project 1 - Homework
 ## Automated ELK Stack Deployment
 
 The files in this repository were used to configure the network depicted below.
@@ -113,7 +113,7 @@ We have installed the following Beats on these machines:
 
 These Beats allow us to collect the following information from each machine:
 - _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
-- Filebeat - Centralizes log data and forwards to the Elk Server. Filebeat monitors log files, collects log events, and will forward to Logstash or Elasticsearch.  An example is the system syslog.  If someone is attempting to log into one of my web servers but the firewall is in place properly, the attacker will not gain access and my Kibana log file will show the numerous attampts to try and log in.
+- Filebeat - Centralizes log data and forwards to the Elk Server. Filebeat monitors log files, collects log events, and will forward to Logstash or Elasticsearch.  An example is a DOS attack on the system syslog.  If someone is attempting to log into one of my web servers but the firewall is in place properly, the attacker will not gain access and my Kibana log file will show the numerous attampts to try and log in.
 
 - Metricbeat - collects metrics and statistics and sends them to a specific output such as ElasticSearch or Logstash.  For example, I ran a stress test on my web server 1.  I then viewed in Kibana - the metrics tab and how it recorded the data.  Specifically I saw how metricbeat monitored the CPU usage and how it was running much higher than normal.
 
@@ -130,10 +130,12 @@ _TODO: Answer the following questions to fill in the blanks:_
 - elk.yml -- copied in /etc/ansible/ folder of the ansible docker
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
 - You will update the hosts file to include the web server IPs and the Elk server IP.
-![Snip-of-hosts-file](Ansible/hosts.snip.txt)
+[Snip-of-hosts-file](Ansible/hosts.snip.txt)
+- I include the web server IP addresses to the filebeat-config.yml playbook which specifies filebeat will go to those web servers.  The Elk server IP is added to the hosts file and will go to that server.
 
 - _Which URL do you navigate to in order to check that the ELK server is running?
 Kibana website - specifically - Elk-server-IP:5601/app/kibana ex: 104.43.202.171:5601/app/kibana
+
 - As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 ***
 - In your In your Jump-Box and connected to your ansible container - navigate to your /etc/ansible folder
