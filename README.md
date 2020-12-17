@@ -58,7 +58,7 @@ The machines on the internal network are not exposed to the public Internet.
 
 Only the Jump Box Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - _Whitelisted IP address:_
-- My home IP (undisclosed)
+- My home IP (undisclosed) - 192.168.86.131 (localhost)
 
 Machines within the network can only be accessed by the Jump Box Provisioner with the ansible docker running (in my case - docker focused_darwin).
 - _Which machine did you allow to access your ELK VM? What was its IP address?_
@@ -67,13 +67,13 @@ Machines within the network can only be accessed by the Jump Box Provisioner wit
 
 A summary of the access policies in place can be found in the table below.
 
-| Name                 | Publicly Accessible | Allowed IP Addresses  |
-|----------------------|---------------------|-----------------------|
-| Jump-Box-Provisioner | Yes                 | Home IP (undisclosed) |
-| Web-1                | No                  | 10.0.0.4              |
-| Web-2                | No                  | 10.0.0.4              |
-| Web-3                | No                  | 10.0.0.4              |
-| Elk-Server           | No                  | 10.0.0.4              |
+| Name                 | Publicly Accessible | Allowed IP Addresses                               |
+|----------------------|---------------------|----------------------------------------------------|
+| Jump-Box-Provisioner | Yes                 | Home IP (undisclosed) - 192.168.86.131 (localhost) |
+| Web-1                | No                  | 10.0.0.4                                           |
+| Web-2                | No                  | 10.0.0.4                                           |
+| Web-3                | No                  | 10.0.0.4                                           |
+| Elk-Server           | No                  | 10.0.0.4                                           |
 
 ### Elk Configuration
 
@@ -106,7 +106,7 @@ Private IP's:
 - 10.0.0.7
 
 We have installed the following Beats on these machines:
-- _Specify which Beats you successfully installed_
+- _Specify which Beats you successfully installed:_
 - Filebeat
 - Metricbeat
 
