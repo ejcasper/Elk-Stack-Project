@@ -4,6 +4,8 @@
 
 The files in this repository were used to configure the network depicted below.
 
+![TODO: Path to diagram](Diagrams/Diagram.png)
+
 https://drive.google.com/file/d/1WxC_Z52Ex4G6xkgJoxcIZDzBPU1z2DQ1/view?usp=sharing
 
 
