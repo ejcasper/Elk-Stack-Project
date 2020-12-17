@@ -123,13 +123,15 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: I do - the Jump-Box-Provisioner running an Ansible Container (focused_darwin)
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the playbook file to ansible docker.
+- Update the playbook file to include... *Web Server IP addresses with python interpreter) and ELK server IP address (with python interpreter)
+- Run the playbook, and navigate to the webservers to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
+- filebeat-config.yml -- copied in /etc/ansible/ folder of the ansible docker
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
+- 
 - _Which URL do you navigate to in order to check that the ELK server is running?
-
+Kibana website - specifically - Elk-server-IP:5601/app/kibana
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
