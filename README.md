@@ -98,8 +98,6 @@ The following screenshot displays the result of running `docker ps` after succes
 https://drive.google.com/file/d/1yUMUWmB5yqlOKO-EnmLLjqY0rz6cjI_W/view?usp=sharing
 
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
-
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
 - _TODO: List the IP addresses of the machines you are monitoring_
@@ -147,4 +145,3 @@ Kibana website - specifically - Elk-server-IP:5601/app/kibana ex: 104.43.202.171
 - cp /Elk-Stack-Project/Ansible* ./playbooks
 - Now update the hosts file with the IP of your Web Servers and Elk server.
 - Then install your elk server by running: ansible-playbook elk.yml
- 
