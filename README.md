@@ -30,10 +30,10 @@ This document contains the following details:
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
 Load balancing ensures that the application will be highly available, in addition to restricting unauthorized users to the network.
-- _What aspect of security do load balancers protect?
+- _What aspect of security do load balancers protect?_
 - Load Balancers protect against DDoS attacks.  Load Balancers receive incoming traffic to the website and distributes that traffic across multiple servers. In our virtual cloud setup with have one load balancer to distribute traffic between 3 Web Servers.
 
-- _What is the advantage of a jump box?
+- _What is the advantage of a jump box?_
 - A jump box has many advantages. For one, a jump box forces all traffic through a single node which makes it is to monitor and secure.  By logging into the jump box first we can manage a few connections and not have to necessarily monitor all of the virtual machines.  A jump box also protects our web servers from the public internet.  Only the jump box is exposed to the public internet (which we access through our virtual network using port 22).  A jump box also allows only specific IP addresses that it confirms and passes those to the machines.  
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the logs and system traffic.
@@ -57,7 +57,7 @@ The configuration details of each machine may be found below.
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the Jump Box Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _Whitelisted IP address_
+- _Whitelisted IP address:_
 - My home IP (undisclosed)
 
 Machines within the network can only be accessed by the Jump Box Provisioner with the ansible docker running (in my case - docker focused_darwin).
@@ -135,14 +135,14 @@ _Answer the following questions to fill in the blanks:_
 - _Which URL do you navigate to in order to check that the ELK server is running?
 Kibana website - specifically - Elk-server-IP:5601/app/kibana ex: 104.43.202.171:5601/app/kibana
 
-- As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
-***
-- In your In your Jump-Box and connected to your ansible container - navigate to your /etc/ansible folder
-- Then create a folder for the files.  Create by doing: mkdir playbooks
-- Next you will download the project from GitHub:
-- git clone https://github.com/ejcasper/Elk-Stack-Project.git
-- Now it is time to copy the playbook files into our new folder:
-- cp /Elk-Stack-Project/Ansible/* .
-- cp /Elk-Stack-Project/Ansible* ./playbooks
-- Now update the hosts file with the IP of your Web Servers and Elk server.
-- Then install your elk server by running: ansible-playbook elk.yml
+- _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+
+  - In your In your Jump-Box and connected to your ansible container - navigate to your /etc/ansible folder
+  - Then create a folder for the files.  Create by doing: mkdir playbooks
+  - Next you will download the project from GitHub:
+  - git clone https://github.com/ejcasper/Elk-Stack-Project.git
+  - Now it is time to copy the playbook files into our new folder:
+  - cp /Elk-Stack-Project/Ansible/* .
+  - cp /Elk-Stack-Project/Ansible* ./playbooks
+  - Now update the hosts file with the IP of your Web Servers and Elk server.
+  - Then install your elk server by running: ansible-playbook elk.yml
