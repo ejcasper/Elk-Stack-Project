@@ -131,7 +131,9 @@ _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
 - elk.yml -- copied in /etc/ansible/ folder of the ansible docker
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- You will update the hosts file to include the web server IPs and the Elk server IP. - 
+- You will update the hosts file to include the web server IPs and the Elk server IP.
+![Snip-of-hosts-file](Ansible/hosts.snip.txt)
+
 - _Which URL do you navigate to in order to check that the ELK server is running?
 Kibana website - specifically - Elk-server-IP:5601/app/kibana ex: 104.43.202.171:5601/app/kibana
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
