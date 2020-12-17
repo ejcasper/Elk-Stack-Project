@@ -7,7 +7,7 @@ The files in this repository were used to configure the network depicted below.
 https://drive.google.com/file/d/1WxC_Z52Ex4G6xkgJoxcIZDzBPU1z2DQ1/view?usp=sharing
 
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
   - _TODO: Enter the playbook file._
   - Elk.yml
@@ -36,8 +36,9 @@ A jump box has many advantages. For one, a jump box forces all traffic through a
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the logs and system traffic.
 - _TODO: What does Filebeat watch for?_
+- Logging information - changes?????
 - _TODO: What does Metricbeat record?_
-o	Metricbeat collects metrics and statistics and sends them to a specific output such as ElasticSearch or Logstash.  In our activity we ran various stresses to see how metricbeat recorded the data.  Specifically we saw how metricbeat monitored the CPU, memory, and load of our web servers.
+o	Metricbeat records metrics and statistics - such as CPU usage or loads to a web server.
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
@@ -45,9 +46,9 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 | Name     | Function                         | IP Address | Operating System |
 |----------|----------------------------------|------------|------------------|
 | Jump Box | Gateway                          | 10.0.0.1   | Linux            |
-| Web 1    | DVWA                             | 10.0.0.5   | Linux            |
-| Web 2    | DVWA                             | 10.0.0.6   | Linux            |
-| Web 3    | DVWA                             | 10.0.0.7   | Linux            |
+| Web 1    | Web Server                       | 10.0.0.5   | Linux            |
+| Web 2    | Web Server                       | 10.0.0.6   | Linux            |
+| Web 3    | Web Server                       | 10.0.0.7   | Linux            |
 | Elk Sever| Centralized Logging and Storage  | 10.1.0.4   | Linux            |
 
 ### Access Policies
@@ -89,6 +90,8 @@ The playbook implements the following tasks:
 - Enable the service
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
+
+https://drive.google.com/file/d/1yUMUWmB5yqlOKO-EnmLLjqY0rz6cjI_W/view?usp=sharing
 
 SCREENSHOT!!!!!!!
 
