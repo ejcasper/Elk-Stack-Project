@@ -4,7 +4,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-(images/GitHub\Elk-Stack-Project\Diagram.png)
+https://drive.google.com/file/d/1WxC_Z52Ex4G6xkgJoxcIZDzBPU1z2DQ1/view?usp=sharing
 
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
@@ -27,67 +27,94 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly _____, in addition to restricting _____ to the network.
-- _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
+Load balancing ensures that the application will be highly available, in addition to restricting unauthorized users to the network.
+*TODO: What aspect of security do load balancers protect?
+- Load Balancers protect against DDoS attacks.  Load Balancers receive incoming traffic to the website and distributes that traffic across multiple servers. In our virtual cloud setup with have one load balancer to distribute traffic between 3 Web Servers.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
+*What is the advantage of a jump box?_
+A jump box has many advantages. For one, a jump box forces all traffic through a single node which makes it is to monitor and secure.  By logging into the jump box first we can manage a few connections and not have to necessarily monitor all of the virtual machines.  A jump box also protects our web servers from the public internet.  Only the jump box is exposed to the public internet (which we access through our virtual network using port 22).  A jump box also allows only specific IP addresses that it confirms and passes those to the machines.  
+
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the logs and system traffic.
 - _TODO: What does Filebeat watch for?_
 - _TODO: What does Metricbeat record?_
+o	Metricbeat collects metrics and statistics and sends them to a specific output such as ElasticSearch or Logstash.  In our activity we ran various stresses to see how metricbeat recorded the data.  Specifically we saw how metricbeat monitored the CPU, memory, and load of our web servers.
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
+| Name     | Function                         | IP Address | Operating System |
+|----------|----------------------------------|------------|------------------|
+| Jump Box | Gateway                          | 10.0.0.1   | Linux            |
+| Web 1    | DVWA                             | 10.0.0.5   | Linux            |
+| Web 2    | DVWA                             | 10.0.0.6   | Linux            |
+| Web 3    | DVWA                             | 10.0.0.7   | Linux            |
+| Elk Sever| Centralized Logging and Storage  | 10.1.0.4   | Linux            |
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+Only the Jump Box Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - _TODO: Add whitelisted IP addresses_
+- My home IP (undisclosed)
 
-Machines within the network can only be accessed by _____.
+Machines within the network can only be accessed by the Jump Box Provisioner with the ansible docker running (in my case - docker focused_darwin).
 - _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+- Jump Box Provisioner
+- Private IP: 10.0.0.4
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Name                 | Publicly Accessible | Allowed IP Addresses  |
+|----------------------|---------------------|-----------------------|
+| Jump-Box-Provisioner | Yes                 | Home IP (undisclosed) |
+| Web-1                | No                  | 10.0.0.4              |
+| Web-2                | No                  | 10.0.0.4              |
+| Web-3                | No                  | 10.0.0.4              |
+| Elk-Server           | No                  | 10.0.0.4              |
 
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
 - _TODO: What is the main advantage of automating configuration with Ansible?_
+- •	By configuring with Ansible we only need to run our playbook once and it will update all three web machines at the same time. Since Ansible is easy to use, this saves time and ensures consistency through all three machines.
 
 The playbook implements the following tasks:
 - _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Use more memory
+- Install Docker
+- Install Python3
+- Install Python Docker
+- Download and Launch an Elk Container
+- Enable the service
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
+
+SCREENSHOT!!!!!!!
 
 ![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
 - _TODO: List the IP addresses of the machines you are monitoring_
+Private IP's:
+- 10.0.0.5
+- 10.0.0.6
+- 10.0.0.7
 
 We have installed the following Beats on these machines:
 - _TODO: Specify which Beats you successfully installed_
+- Filebeat
+- Metricbeat
 
 These Beats allow us to collect the following information from each machine:
 - _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Filebeat - Centralizes log data and forwards to the Elk Server. Filebeat monitors log files, collects log events, and will forward to Logstash or Elasticsearch.  An example is the system syslog.  If someone is attempting to log into one of my web servers but the firewall is in place properly, the attacker will not gain access and my Kibana log file will show the numerous attampts to try and log in.
+
+- Metricbeat - collects metrics and statistics and sends them to a specific output such as ElasticSearch or Logstash.  For example, I ran a stress test on my web server 1.  I then viewed in Kibana - the metrics tab and how it recorded the data.  Specifically I saw how metricbeat monitored the CPU usage and how it was running much higher than normal.
 
 ### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: I do - the Jump-Box-Provisioner running an Ansible Container (focused_darwin)
 
 SSH into the control node and follow the steps below:
 - Copy the _____ file to _____.
