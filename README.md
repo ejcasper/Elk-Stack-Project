@@ -40,7 +40,7 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 - _TODO: What does Filebeat watch for?_
 - Logging information - changes?????
 - _TODO: What does Metricbeat record?_
-o	Metricbeat records metrics and statistics - such as CPU usage or loads to a web server.
+-	Metricbeat records metrics and statistics - such as CPU usage or loads to a web server.
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
@@ -136,5 +136,15 @@ _TODO: Answer the following questions to fill in the blanks:_
 
 - _Which URL do you navigate to in order to check that the ELK server is running?
 Kibana website - specifically - Elk-server-IP:5601/app/kibana ex: 104.43.202.171:5601/app/kibana
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
-Working on...
+- As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+***
+- In your In your Jump-Box and connected to your ansible container - navigate to your /etc/ansible folder
+- Then create a folder for the files.  Create by doing: mkdir playbooks
+- Next you will download the project from GitHub:
+- git clone https://github.com/ejcasper/Elk-Stack-Project.git
+- Now it is time to copy the playbook files into our new folder:
+- cp /Elk-Stack-Project/Ansible/* .
+- cp /Elk-Stack-Project/Ansible* ./playbooks
+- Now update the hosts file with the IP of your Web Servers and Elk server.
+- Then install your elk server by running: ansible-playbook elk.yml
+ 
